@@ -1,0 +1,11 @@
+name: CustomCurrencies
+author: DeadSilenceIV
+version: 1.0
+main: us.lynuxcraft.deadsilenceiv.customcurrencies.CustomCurrencies
+softdepend: [PlaceholderAPI]
+commands:
+  customcurrencies:
+    usage: /<command>
+    aliases: [cmc]
+  deposit:
+    usage: /<command>
