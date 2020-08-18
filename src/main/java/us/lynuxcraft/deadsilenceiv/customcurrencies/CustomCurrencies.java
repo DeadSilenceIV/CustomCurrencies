@@ -4,11 +4,14 @@ import lombok.Getter;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import us.lynuxcraft.deadsilenceiv.customcurrencies.commands.Balances;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.commands.Deposit;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.commands.MainCmd;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.hooks.PlaceHolderExpansion;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.listeners.DataHandler;
+import us.lynuxcraft.deadsilenceiv.customcurrencies.listeners.InventoryHandler;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.managers.EconomyManager;
+import us.lynuxcraft.deadsilenceiv.customcurrencies.managers.InventoryManager;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.managers.TaskManager;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.managers.yml.ConfigStorageFile;
 import us.lynuxcraft.deadsilenceiv.customcurrencies.managers.yml.DataStorageFile;
@@ -19,6 +22,7 @@ public class CustomCurrencies extends JavaPlugin{
     @Getter private ConfigStorageFile configStorageFile;
     @Getter private DataStorageFile dataStorageFile;
     @Getter private EconomyManager economyManager;
+    @Getter private InventoryManager inventoryManager;
     @Getter private TaskManager taskManager;
     @Override
     public void onEnable() {
@@ -37,16 +41,19 @@ public class CustomCurrencies extends JavaPlugin{
         dataStorageFile = new DataStorageFile();
         economyManager = new EconomyManager();
         economyManager.load();
+        inventoryManager = new InventoryManager();
         taskManager = new TaskManager();
     }
 
     private void loadListeners(){
         getServer().getPluginManager().registerEvents(new DataHandler(),this);
+        getServer().getPluginManager().registerEvents(new InventoryHandler(),this);
     }
 
     private void loadCommands(){
         getServer().getPluginCommand("customcurrencies").setExecutor(new MainCmd());
         getServer().getPluginCommand("deposit").setExecutor(new Deposit());
+        getServer().getPluginCommand("balances").setExecutor(new Balances());
     }
 
     @Override

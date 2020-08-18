@@ -139,6 +139,7 @@ public class MainCmd implements CommandExecutor{
         plugin.sendMessage(sender, "&8- &4/&ccmc add &4<&cplayer&4> &4<&ccurrency&4> &4<&camount&4>&f- &8(&7Add value to a player economy account&8)",false);
         plugin.sendMessage(sender, "&8- &4/&ccmc remove &4<&cplayer&4> &4<&ccurrency&4> &4<&camount&4>&f- &8(&7Remove value from a player economy account&8)",false);
         plugin.sendMessage(sender, "&8- &4/&cdeposit &4<&cplayer&4> &4<&ccurrency&4> &4<&camount&4>&f- &8(&7Deposit to a player economy account&8)",false);
+        plugin.sendMessage(sender, "&8- &4/&cbalances &f- &8(&7See all your balances&8)",false);
         plugin.sendMessage(sender, "&f&m----------------------------------------------",false);
     }
 }

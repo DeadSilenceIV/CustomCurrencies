@@ -9,3 +9,5 @@ commands:
     aliases: [cmc]
   deposit:
     usage: /<command>
+  balances:
+    usage: /<command>

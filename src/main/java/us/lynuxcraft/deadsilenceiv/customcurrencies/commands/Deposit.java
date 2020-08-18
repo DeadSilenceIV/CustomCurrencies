@@ -51,7 +51,9 @@ public class Deposit implements CommandExecutor{
                                     DecimalFormat format = new DecimalFormat("#.##");
                                     CustomCurrencies.sendMessage(sender, "&f" + format.format(value) + "&6$ &ahave been sent to " + player.getName() + "'s &e" + economy.getName() + " &aaccount&6!", false);
                                     p.playSound(p.getLocation(), Sound.ARROW_HIT.bukkitSound(), 100F, 1F);
-                                    CustomCurrencies.sendMessage(sender, "&f" + format.format(value) + "&6$ &ahave been added to your &e" + economy.getName() + " &aaccount&6!", false);
+                                    if(player.getPlayer() != null) {
+                                        CustomCurrencies.sendMessage(player.getPlayer(), "&f" + format.format(value) + "&6$ &ahave been added to your &e" + economy.getName() + " &aaccount&6!", false);
+                                    }
                                     return true;
                                 } else {
                                     CustomCurrencies.sendMessage(sender, "&cYou don't have this amount in your &e" + economy.getName() + " &caccount&6!", false);
@@ -68,6 +70,7 @@ public class Deposit implements CommandExecutor{
                     return true;
                 }
             }
+            CustomCurrencies.sendMessage(sender,"&cCorrect usage&8: &4/&cdeposit &4<&cplayer&4> &4<&ccurrency&4> &4<&camount&4>",false);
         }
         return true;
     }
